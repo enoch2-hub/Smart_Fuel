@@ -33,7 +33,8 @@
 
 
 % Rule for Diesel (Always requires QR)
-
+check_diesel(_) :-
+    write('Safety Protocol: Diesel requires a valid QR Code verification. Please scan now.').
 
 
 
@@ -56,7 +57,8 @@
 
 
 
-
+check_vessel(_) :- 
+    write('Error: Vessel ID not found in the National Registry.').
 
 % ==========================================
 % INTERACTIVE USER INTERFACE
