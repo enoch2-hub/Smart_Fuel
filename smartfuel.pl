@@ -63,15 +63,20 @@ check_vessel(_) :-
 % INTERACTIVE USER INTERFACE
 % ==========================================
 % This starts the application
-
-
-
-
-
-
-
-
-
+start :-
+    nl,
+    write('======================================'), nl,
+    write('   Welcome to SmartFuel System      '), nl,
+    write('======================================'), nl,
+    nl,
+    write('Before starting the process, please select the sector you belong to:'), nl,
+    write('[1] - I just drive for personal use'), nl,
+    write('[2] - Vessel Operator in the Fisheries Sector'), nl,
+    nl,
+    write('Please enter the number of your choice. Remember to end with a period (e.g 1.): '),
+    read(UserChoice),
+    nl,
+    process_user_selection(UserChoice).
 
 run_choice(1) :-
  write('Enter Plate Number (e.g. 4082.): '), read(Plate),
