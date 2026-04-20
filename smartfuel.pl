@@ -3,11 +3,12 @@
 % ==========================================
 % Change these facts to test different scenarios (e.g., date 13 or holiday false)
 
+today_date(20).
+is_holiday(false).
 
-
-
-
-
+vehicle(v01, 3, petrol, 10, false).
+vehicle(v02, 8, diesel, 8, true).
+vehicle(v03, 5, diesel, 14, false).
 
 
 % ==========================================
@@ -15,11 +16,9 @@
 % ==========================================
 % vessel(VesselID, LastFuelingDate)
 
-
-
-
-
-
+boat(b01, 5).
+boat(b02, 14).
+boat(b03, 10).
 
 
 % ==========================================
