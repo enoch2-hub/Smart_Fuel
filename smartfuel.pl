@@ -23,8 +23,32 @@ boat(b03, 10).
 
 % ==========================================
 % CORE LOGIC: VEHICLE ELIGIBILITY (Everyday Users)
+
 % ==========================================
-% Rule for Petrol
+check_vessel(ID):-
+today_date(Today),
+Days Passed is today -Last date,
+Days passed>=5,
+Litres is Dayspassed *25,
+write('fuel allocated:'),write (Litres),write('litres'),nl.
+
+check_vessel(ID):-
+vessel(ID,LastDate),
+Days Passed is Today- Lastdate,
+Days Passed <5,
+write('not eligible yet.'),nl,
+write('come back after'),write(Remaining),write('days'),nl
+
+
+%Error handling for unknown vessel 
+check_vessel(ID) :-
+\+vessel(ID,_),
+write(Error:Vessel ID not found.'),nl.
+% ==========================================
+% Rule for Petrol (Always requires QR)
+check_petrol(_) :-
+write('safety protocol: Petrol requires a valid QR code verification.please scan now.').
+
 
 
 
