@@ -78,12 +78,12 @@ start :-
     nl,
     process_user_selection(UserChoice).
 
-Process_User_selection() :-
+Process_User_selection(1) :-
  write('Enter Plate Number (e.g. 4082.): '), read(Plate),
  write('Enter Fuel Type (petrol. or diesel.): '), read(Type),
  (Type == petrol -> check_petrol(Plate) ; check_diesel(Plate)), nl.
  
-Process_User_Selection() :-
+Process_User_Selection(2) :-
  write('Enter Vessel ID (e.g. v001.): '), read(ID),
  check_vessel(ID), nl.
 
