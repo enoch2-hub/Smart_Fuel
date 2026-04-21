@@ -57,7 +57,9 @@ check_diesel(_) :-
 
 
 check_vessel(_) :- 
-    write('Error: Vessel ID not found in the National Registry.').
+    write('--------------!-Error-!---------------'), nl,
+    write('-> Vessel ID not found in the National Registry.'), nl,
+    write('-> Please Register Your Vessel!').
 
 % ==========================================
 % INTERACTIVE USER INTERFACE
