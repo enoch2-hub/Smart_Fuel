@@ -45,8 +45,7 @@ check_vessel(ID) :-
 \+vessel(ID,_),
 write(Error:Vessel ID not found.'),nl.
 % ==========================================
-check_petrol(_) :-
-write('Holiday protocol active:All Petrol Vechicles approved regardless of number plate ').
+
 
 
 
