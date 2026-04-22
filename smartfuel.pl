@@ -55,9 +55,27 @@ write('safety protocol: Petrol requires a valid QR code verification.please scan
 
 
 
-% Rule for Diesel (Always requires QR)
-check_diesel(_) :-
-    write('Safety Protocol: Diesel requires a valid QR Code verification. Please scan now.').
+% Rule for Diesel
+check_Diesel(Plate) :-
+    is_holiday(true),
+    write('Holiday Protocol Active: All Petrol vehicles approved regardless of Plate Number.').
+
+check_diesel(Plate) :-
+    LastDigit is Plate mod 10,
+    LastDigitMod is LastDigit mod 2,
+    (LastDigitMod == 0 -> 
+        write ('Access Granted: Even Plate (Tue/Thu/Sat).'), nl,
+        write ('---------------------------------------------'), nl,
+        write('Status: Provisionally APPROVED.'), nl,
+        write('Please scan QR Code to authorize pump.')
+        write('---------------------------------------------'), nl
+    ; 
+        write('Access Denied: Odd Number (Mon/Wed/Fri).'), nl,
+        write ('---------------------------------------------'), nl,
+        write('Status: DENIED. Your vehicle is not eligible.'), nl,
+        write('Please return on your assigned day.')
+        write('---------------------------------------------'), nl
+    ).
 
 
 
