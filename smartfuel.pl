@@ -56,7 +56,7 @@ write('safety protocol: Petrol requires a valid QR code verification.please scan
 
 
 % Rule for Diesel
-check_Diesel(Plate) :-
+check_diesel(Plate) :-
     is_holiday(true),
     write('Holiday Protocol Active: All Petrol vehicles approved regardless of Plate Number.').
 
