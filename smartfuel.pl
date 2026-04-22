@@ -25,25 +25,7 @@ boat(b03, 10).
 % CORE LOGIC: VEHICLE ELIGIBILITY (Everyday Users)
 
 % ==========================================
-check_vessel(ID):-
-today_date(Today),
-Days Passed is today -Last date,
-Days passed>=5,
-Litres is Dayspassed *25,
-write('fuel allocated:'),write (Litres),write('litres'),nl.
-
-check_vessel(ID):-
-vessel(ID,LastDate),
-Days Passed is Today- Lastdate,
-Days Passed <5,
-write('not eligible yet.'),nl,
-write('come back after'),write(Remaining),write('days'),nl
-
-
-%Error handling for unknown vessel 
-check_vessel(ID) :-
-\+vessel(ID,_),
-write(Error:Vessel ID not found.'),nl.
+check
 % ==========================================
 
 
@@ -84,6 +66,28 @@ check_diesel(Plate) :-
 % ==========================================
 % CORE LOGIC: FISHERIES ALLOCATION
 % ==========================================
+check_vessel(ID):-
+today_date(Today),
+Days Passed is today -Last date,
+Days passed>=5,
+Litres is Dayspassed *25,
+write('fuel allocated:'),write (Litres),write('litres'),nl.
+
+check_vessel(ID):-
+vessel(ID,LastDate),
+Days Passed is Today- Lastdate,
+Days Passed <5,
+write('not eligible yet.'),nl,
+write('come back after'),write(Remaining),write('days'),nl
+
+
+%Error handling for unknown vessel 
+check_vessel(ID) :-
+\+vessel(ID,_),
+write(Error:Vessel ID not found.'),nl.
+% ==========================================
+check_petrol(_) :-
+write('Holiday protocol active:All Petrol Vechicles approved regardless of number plate ').
 
 
 
