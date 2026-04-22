@@ -45,9 +45,8 @@ check_vessel(ID) :-
 \+vessel(ID,_),
 write(Error:Vessel ID not found.'),nl.
 % ==========================================
-% Rule for Petrol (Always requires QR)
 check_petrol(_) :-
-write('safety protocol: Petrol requires a valid QR code verification.please scan now.').
+write('Holiday protocol active:All Petrol Vechicles approved regardless of number plate ').
 
 
 
