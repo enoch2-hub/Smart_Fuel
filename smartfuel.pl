@@ -57,7 +57,7 @@ write('Holiday protocol active:All Petrol Vechicles approved regardless of numbe
 % Rule for Diesel
 check_diesel(Plate) :-
     is_holiday(true),
-    write('Holiday Protocol Active: All Petrol vehicles approved regardless of Plate Number.').
+    write('Holiday Protocol Active: All Diesel vehicles approved regardless of Plate Number.').
 
 check_diesel(Plate) :-
     LastDigit is Plate mod 10,
