@@ -53,21 +53,20 @@ check_diesel(Plate) :-
     write('Holiday Protocol Active: All Diesel vehicles approved regardless of Plate Number.').
 
 check_diesel(Plate) :-
+    is_holiday(false),
     LastDigit is Plate mod 10,
     LastDigitMod is LastDigit mod 2,
-    (LastDigitMod == 0 ->
-
-write ('---------------------------------------------'), nl, 
-        write ('Access Granted: Even Plate (Tue/Thu/Sat).'), nl,
+    (LastDigitMod == 0 -> 
+        write('---------------------------------------------'), nl,
+        write('Access Granted: Even Plate (Tue/Thu/Sat).'), nl,
         write('Status: Provisionally APPROVED.'), nl,
-        write('Please scan QR Code to authorize pump.')
+        write('Please scan QR Code to authorize pump.'), nl,
         write('---------------------------------------------'), nl
-    ;
-
-write ('---------------------------------------------'), nl, 
+    ; 
+        write('---------------------------------------------'), nl,
         write('Access Denied: Odd Number (Mon/Wed/Fri).'), nl,
         write('Status: DENIED. Your vehicle is not eligible.'), nl,
-        write('Please return on your assigned day.')
+        write('Please return on your assigned day.'), nl,
         write('---------------------------------------------'), nl
     ).
 
