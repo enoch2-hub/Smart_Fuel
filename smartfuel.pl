@@ -4,21 +4,25 @@
 % Change these facts to test different scenarios (e.g., date 13 or holiday false)
 
 today_date(20).
+today_day(tuesday).
 is_holiday(false).
 
+%Fuel distribution rule
+even_days([tuesday, thursday, saturday]).
+odd_days([monday, wednesday, friday]).
+
+fuel_rate_per_day(25).
+minimun_days_from_last_fueled_date(5).
+
+%Vehicle(VehicleID, LastDigit, FuelType, LastFuelingDate, QR)
 vehicle(v01, 3, petrol, 10, false).
 vehicle(v02, 8, diesel, 8, true).
 vehicle(v03, 5, diesel, 14, false).
 
-
-% ==========================================
-% SECTOR DATA (Fisheries Records)
-% ==========================================
 % vessel(VesselID, LastFuelingDate)
-
-boat(b01, 5).
-boat(b02, 14).
-boat(b03, 10).
+vessel(b01, 5).
+vessel(b02, 14).
+vessel(b03, 10).
 
 
 % ==========================================
