@@ -85,15 +85,15 @@ check_diesel(Plate) :-
 % ==========================================
 check_vessel(ID):-
 today_date(Today),
-Days Passed is today -Last date,
-Days passed>=5,
+DaysPassed is today -Last date,
+Dayspassed>=5,
 Litres is Dayspassed *25,
 write('fuel allocated:'),write (Litres),write('litres'),nl.
 
 check_vessel(ID):-
 vessel(ID,LastDate),
-Days Passed is Today- Lastdate,
-Days Passed <5,
+DaysPassed is Today- Lastdate,
+DaysPassed <5,
 write('not eligible yet.'),nl,
 write('come back after'),write(Remaining),write('days'),nl
 
