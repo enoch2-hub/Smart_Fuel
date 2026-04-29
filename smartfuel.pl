@@ -29,7 +29,7 @@ vessel(b03, 10).
 % CORE LOGIC: VEHICLE ELIGIBILITY (Everyday Users)
 % ==========================================
 % Checking eligibility for petrol
-check_petrol(Plate) :-
+check_petrol(_) :-
     is_holiday(true),
     write('Holiday Protocol Active: All Petrol vehicles approved regardless of Plate Number.').
 
@@ -41,7 +41,7 @@ check_petrol(Plate) :-
         write('---------------------------------------------'), nl,
         write('Access Granted: Even Plate (Tue/Thu/Sat).'), nl,
         write('Status: Provisionally APPROVED.'), nl,
-        write('Please scan QR Code to authorize pump.'), nl,
+        write('You are authorized to pump petrol.'), nl,
         write('---------------------------------------------'), nl
     ; 
         write('---------------------------------------------'), nl,
@@ -52,7 +52,7 @@ check_petrol(Plate) :-
     ).
 
 % Rule for Diesel
-check_diesel(Plate) :-
+check_diesel(_) :-
     is_holiday(true),
     write('Holiday Protocol Active: All Diesel vehicles approved regardless of Plate Number.').
 
@@ -64,7 +64,7 @@ check_diesel(Plate) :-
         write('---------------------------------------------'), nl,
         write('Access Granted: Even Plate (Tue/Thu/Sat).'), nl,
         write('Status: Provisionally APPROVED.'), nl,
-        write('Please scan QR Code to authorize pump.'), nl,
+        write('You are authorized to pump diesel.'), nl,
         write('---------------------------------------------'), nl
     ; 
         write('---------------------------------------------'), nl,
@@ -84,43 +84,36 @@ check_diesel(Plate) :-
 % CORE LOGIC: FISHERIES ALLOCATION
 % ==========================================
 check_vessel(ID):-
+vessel(ID, LastDate),
 today_date(Today),
-DaysPassed is today -Last date,
-Dayspassed>=5,
-Litres is Dayspassed *25,
-write('fuel allocated:'),write (Litres),write('litres'),nl.
+DaysPassed is Today - LastDate,
+DaysPassed >= 5,
+Litres is DaysPassed * 25,
+write('fuel allocated: '), write(Litres), write(' litres'), nl.
 
 check_vessel(ID):-
-vessel(ID,LastDate),
-DaysPassed is Today- Lastdate,
-DaysPassed <5,
-write('not eligible yet.'),nl,
-write('come back after'),write(Remaining),write('days'),nl
+vessel(ID, LastDate),
+today_date(Today),
+DaysPassed is Today - LastDate,
+DaysPassed < 5,
+Remaining is 5 - DaysPassed,
+write('not eligible yet.'), nl,
+write('come back after'), write(Remaining), write(' days'), nl.
 
 
 %Error handling for unknown vessel 
 check_vessel(ID) :-
-\+vessel(ID,_),
-write(Error:Vessel ID not found.'),nl.
-% ==========================================
-check_petrol(_) :-
-write('Holiday protocol active:All Petrol Vechicles approved regardless of number plate ').
-
-
-
-
-
-
-
-
-
-
-
-
-check_vessel(_) :- 
+\+vessel(ID, _),
+    \+ vessel(ID, _),
     write('--------------!-Error-!---------------'), nl,
     write('-> Vessel ID not found in the National Registry.'), nl,
-    write('-> Please Register Your Vessel!').
+    write('-> Please Register Your Vessel!'), nl.
+% ==========================================
+
+
+
+
+
 
 % ==========================================
 % INTERACTIVE USER INTERFACE
@@ -151,5 +144,15 @@ process_user_selection(2) :-
  check_vessel(ID), nl.
 
 
+vessel_loop :-
+    write('Enter Vessel ID (e.g. b01. or type stop.): '), 
+    read(ID),
+    ( ID == stop -> 
+        write('Exiting Fisheries Portal...') 
+    ; 
+        check_vessel(ID), nl,
+        vessel_loop 
+    ).
 
+    
 % End---------
