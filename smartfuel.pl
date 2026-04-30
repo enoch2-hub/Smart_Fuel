@@ -20,9 +20,9 @@ vehicle(v02, 8, diesel, 8, true).
 vehicle(v03, 5, diesel, 14, false).
 
 % vessel(VesselID, LastFuelingDate)
-vessel(v001, 5).   % Last fueled 11 days ago
-vessel(v002, 14).  % Last fueled 2 days ago
-vessel(v003, 10).  % Last fueled 6 days ago
+vessel(v001, 9).   % Last fueled 11 days ago
+vessel(v002, 18).  % Last fueled 2 days ago
+vessel(v003, 14).  % Last fueled 6 days ago
 
 
 % ==========================================
